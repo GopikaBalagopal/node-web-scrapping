@@ -25,6 +25,10 @@ cron.schedule("0 */12 * * *", () => {
   // Add your custom logic here
 });
 
+app.get("/", (req, res) => {
+  res.send("Node server is running here....");
+});
+
 app.post("/scrap-products", async (req, res) => {
   const { searchItem } = req.body;
 

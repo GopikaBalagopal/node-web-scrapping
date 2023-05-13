@@ -1,8 +1,15 @@
 const express = require("express");
 const serverless = require("serverless-http");
+const bodyParser = require("body-parser");
+
+const connectMongo = require("./mongo/connectDB");
 
 const app = express();
 const router = express.Router();
+
+app.use(bodyParser.json());
+// Parse URL-encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/", (req, res) => {
   res.send("Node server is running here....");
@@ -10,7 +17,7 @@ router.get("/", (req, res) => {
 
 router.post("/scrap-products", async (req, res) => {
   const { searchItem } = req.body;
-
+  console.log({ searchItem });
   try {
     const scrapResult = await scrapInfo(searchItem);
 
@@ -40,4 +47,16 @@ router.get("/products/:item", (req, res) => {
 
 app.use("/.netlify/functions/api", router);
 
-module.exports.handler = serverless(app);
+const handler = serverless(app);
+
+// Export the serverless handler
+module.exports.handler = async (event, context) => {
+  // Ensure the MongoDB connection is established before handling the request
+  //   if (mongoose.connection.readyState !== 1) {
+  //     await mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+  //   }
+  connectMongo();
+
+  // Handle the request using the serverless handler
+  return handler(event, context);
+};

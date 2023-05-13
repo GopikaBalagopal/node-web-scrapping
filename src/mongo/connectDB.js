@@ -15,7 +15,10 @@ const connectMongo = () => {
   // Wait for database to connect, logging an error if there is a problem
   main().catch((err) => console.log(err));
   async function main() {
-    await mongoose.connect(mongoDB);
+    await mongoose.connect(mongoDB, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log(`connected to ${mongoDB}!`);
   }
 };

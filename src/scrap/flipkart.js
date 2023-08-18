@@ -13,7 +13,7 @@ async function scrapFlipkart(searchItem) {
     // "https://www.flipkart.com/"
     `https://www.flipkart.com/search?q=${searchItem}&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off`
   );
-  await page.screenshot({ path: "iphone1.png" });
+  // await page.screenshot({ path: "iphone1.png" });
 
   //   await page.evaluate(() => {
   //     const allDivs = document.querySelectorAll("._2KpZ6l");

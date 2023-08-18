@@ -10,7 +10,7 @@ const connectMongo = () => {
 
   // Define the database URL to connect to.
   const mongoDB =
-    "mongodb+srv://root:oqDsAxW0WZV3E5Ty@cluster0.l3dvu5u.mongodb.net/<database-name>";
+    "mongodb+srv://root:oqDsAxW0WZV3E5Ty@cluster0.l3dvu5u.mongodb.net/scrap-base";
 
   // Wait for database to connect, logging an error if there is a problem
   main().catch((err) => console.log(err));

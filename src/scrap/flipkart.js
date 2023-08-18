@@ -13,7 +13,6 @@ async function scrapFlipkart(searchItem) {
     // "https://www.flipkart.com/"
     `https://www.flipkart.com/search?q=${searchItem}&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off`
   );
-  // await page.screenshot({ path: "iphone1.png" });
 
   //   await page.evaluate(() => {
   //     const allDivs = document.querySelectorAll("._2KpZ6l");
@@ -26,7 +25,6 @@ async function scrapFlipkart(searchItem) {
   //   console.log("text entered");
   //   await page.keyboard.press("Enter");
   //   console.log("enter pressed");
-  await page.screenshot({ path: "iphone2.png" });
 
   // Wait for the search results to load
   await page.waitForSelector("div._1AtVbE", { timeout: 60000 });
